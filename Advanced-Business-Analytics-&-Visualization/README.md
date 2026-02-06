@@ -12,7 +12,7 @@ This project focuses on the "storytelling" aspect of data science, transforming 
 * **Key Skills & Tools:**
     * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards**.
     * **Dashboard Engineering:** Creating interactive, user-driven drill-downs.
-    * **Communication:** Technical walkthrough and verbal data interpretation.
+    * **Communication:** [Recorded video walkthrough](https://youtu.be/0iM9l_zAdvw) and verbal data interpretation.
 * **Core Concepts:**
     * **Graphical Integrity:** Adhering to principles that ensure data is represented accurately without distortion.
     * **Operational Hotspots:** Identifying geographic or temporal clusters of service failure.
