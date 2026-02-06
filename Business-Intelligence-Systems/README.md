@@ -1,11 +1,11 @@
 # Business Intelligence Systems: Analyzing UK National Rail Delays
 
-This project is a comprehensive **Business Intelligence (BI)** study focused on identifying, analyzing, and mitigating train delays within the **UK National Rail** network. The project follows the complete BI lifecycle—from data extraction and descriptive analysis to prescriptive recommendations—to improve operational efficiency and passenger satisfaction.
+This project is a comprehensive **Business Intelligence (BI)** study focused on identifying, analyzing, and mitigating train delays within the **UK National Rail** network. The project follows the complete BI lifecycle, from data extraction and descriptive analysis to prescriptive recommendations, to improve operational efficiency and passenger satisfaction.
 
 ---
 
 ## The Challenge
-The UK National Rail network experienced significant service disruptions between **January and April 2024**, resulting in frequent delays, cancellations, and a surge in refund requests. The objective was to utilize systematic BI approaches—including diagnostic and knowledge analysis—to uncover root causes and propose data-driven strategies for optimized scheduling and infrastructure management.
+The UK National Rail network experienced significant service disruptions between **January and April 2024**, resulting in frequent delays, cancellations, and a surge in refund requests. The objective was to utilize systematic BI approaches, including diagnostic and knowledge analysis—to uncover root causes and propose data-driven strategies for optimized scheduling and infrastructure management.
 
 ---
 
