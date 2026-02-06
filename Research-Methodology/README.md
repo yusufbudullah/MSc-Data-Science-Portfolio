@@ -1,6 +1,6 @@
 # Research Methodology: From Social Media Insights to Organizational Strategy
 
-This repository contains two distinct academic research works completed for the Research Methodology module. These projects focus on different domains—one exploring the broader impact of **Social Media Big Data** and the other proposing a specific **Organizational Memory Model** for an IT consultancy.
+This repository contains two distinct academic research works completed for the Research Methodology module. These projects focus on different domains, one exploring the broader impact of **Social Media Big Data** and the other proposing a specific **Organizational Memory Model** for an IT consultancy.
 
 ---
 
