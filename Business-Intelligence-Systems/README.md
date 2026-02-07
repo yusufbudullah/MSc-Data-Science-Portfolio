@@ -33,7 +33,7 @@ The project utilizes a dataset representing **UK National Rail ticket sales and 
 ---
 
 ## Key Results & Outputs
-* **Presentation:** [Project Preentation](https://youtu.be/GBy6hpSBsoo)
+* **Presentation:** [Project Presentation](https://youtu.be/GBy6hpSBsoo)
 * **Diagnostic Findings:** Identified that **Weather Conditions (1,372 cases)**, Signal Issues, and Staffing shortages were the primary drivers of severe delays.
 * **Customer Impact Insights:** Discovered a strong correlation between **Advance Ticket holders** and refund requests (27.13%), driven by the lack of travel flexibility during disruptions.
 * **Prescriptive Deliverables:**
