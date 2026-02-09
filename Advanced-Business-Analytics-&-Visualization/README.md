@@ -14,14 +14,14 @@ This project focuses on the "storytelling" aspect of data science, transforming 
   * **Dashboard Engineering:** Creating interactive, user-driven drill-downs
   * **Presentation:**
   <p align="center">
-    <a href="https://youtu.be/0iM9l_zAdvw">
-      <img src="https://img.youtube.com/vi/0iM9l_zAdvw/maxresdefault.jpg" width="650">
-    </a>
-  </p>
-  
+  <a href="https://youtu.be/0iM9l_zAdvw">
+    <img src="https://img.youtube.com/vi/0iM9l_zAdvw/maxresdefault.jpg?v=2" width="650">
+  </a>
+  <br>
+  <em>Click the image to watch the presentation.</em>
+</p>
 
-
-
+ 
 ### Interactive Dashboard
 
 <p align="center">
