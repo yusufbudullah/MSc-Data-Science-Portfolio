@@ -13,7 +13,7 @@ This project focuses on the "storytelling" aspect of data science, transforming 
   * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards**
   * **Dashboard Engineering:** Creating interactive, user-driven drill-downs
 
-[![Recorded video walkthrough](https://img.youtube.com/vi/0iM9l_zAdvw/maxresdefault.jpg?v=1)](https://youtu.be/0iM9l_zAdvw)
+[![Recorded video walkthrough](https://img.youtube.com/vi/0iM9l_zAdvw/maxresdefault.jpg?v=2)](https://youtu.be/0iM9l_zAdvw)
 
 
 ### Interactive Dashboard
