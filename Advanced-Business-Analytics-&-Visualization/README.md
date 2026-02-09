@@ -10,11 +10,20 @@ This project focuses on the "storytelling" aspect of data science, transforming 
 * **Objective:** To identify operational inefficiencies and revenue risks within the UK National Rail network through interactive exploration.
 * **Dataset:** [Maven Analytics UK Train Rides](https://mavenanalytics.io/data-playground/uk-train-rides).
 * **Key Skills & Tools:**
-    * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards** [![View Dashboard](Outputs/Dashboard_Preview.png)](https://public.tableau.com/views/YousoufBudullah_ABAV_UKRail/Story1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+  * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards**
+  * **Dashboard Engineering:** Creating interactive, user-driven drill-downs
+  * **Communication:** [Recorded video walkthrough](https://youtu.be/0iM9l_zAdvw)
+
+### Interactive Dashboard
+
+<p align="center">
+  <a href="https://public.tableau.com/views/YousoufBudullah_ABAV_UKRail/Story1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
+    <img src="Outputs/Dashboard_Preview.png" width="650">
+  </a>
+</p>
 
 Click the image to open the interactive Tableau dashboard.
-    * **Dashboard Engineering:** Creating interactive, user-driven drill-downs.
-    * **Communication:** [Recorded video walkthrough](https://youtu.be/0iM9l_zAdvw) and verbal data interpretation.
+
 * **Core Concepts:**
     * **Graphical Integrity:** Adhering to principles that ensure data is represented accurately without distortion.
     * **Operational Hotspots:** Identifying geographic or temporal clusters of service failure.
