@@ -75,7 +75,14 @@ The model connects daily operations with long-term organisational learning.
 ## Presentation
 Project walkthrough and explanation:
 
-[![Watch the presentation](https://img.youtube.com/vi/7i9rm6Fsg6k/maxresdefault.jpg?v=2)](https://youtu.be/7i9rm6Fsg6k)
+<p align="center">
+  <a href="https://youtu.be/7i9rm6Fsg6k">
+    <img src="https://img.youtube.com/vi/7i9rm6Fsg6k/maxresdefault.jpg?v=2" width="650">
+  </a>
+  <br>
+  <em>Click the image to watch the presentation.</em>
+</p>
+
 
 ---
 
