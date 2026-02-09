@@ -13,7 +13,6 @@ This project focuses on the "storytelling" aspect of data science, transforming 
     * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards** [![View Dashboard](Outputs/Dashboard_Preview.png)](https://public.tableau.com/views/YousoufBudullah_ABAV_UKRail/Story1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 Click the image to open the interactive Tableau dashboard.
-.
     * **Dashboard Engineering:** Creating interactive, user-driven drill-downs.
     * **Communication:** [Recorded video walkthrough](https://youtu.be/0iM9l_zAdvw) and verbal data interpretation.
 * **Core Concepts:**
