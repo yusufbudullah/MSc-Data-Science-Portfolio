@@ -1,0 +1,774 @@
+/*********************************************
+Developer Name: Muhammad Yousouf Ali Budullah
+Job Position: Data Scientist
+Program name: my_dap_project_tp086704.sas
+Description: 1-2 lines
+Date First Written:WED, 9/07/2025
+Date Last Updated: FRI, 02/09/2025
+Folder Name: DAP_FT_JUN_2025_ASGMT_TP086704     
+Library Name: ASGMTLIB    
+**********************************************/
+
+/**************************************************************
+ PART 1 : CHAPTER 4 - DATA DICTIONARY / METADATA
+**************************************************************/
+
+/* Display variable details and structure of the dataset */
+PROC CONTENTS DATA = ASGMTLIB.TRAINING_DS;
+RUN;
+
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Univariate Analysis - Categorical Variables
+ Dataset - TRAINING_DS
+**************************************************************/
+
+/* Family Members: Frequency distribution and bar chart */
+TITLE "Univariate Analysis - Frequency of Family Members";
+PROC FREQ DATA = ASGMTLIB.TRAINING_DS;
+    TABLE FAMILY_MEMBERS;
+RUN;
+
+TITLE "Univariate Analysis - Bar Chart of Family Members";
+ODS GRAPHICS / RESET WIDTH=3.0in HEIGHT=4.0in IMAGEMAP;
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    VBAR FAMILY_MEMBERS;
+RUN;
+
+/* Marital Status: Frequency distribution and bar chart */
+TITLE "Univariate Analysis - Frequency of Marital Status";
+PROC FREQ DATA = ASGMTLIB.TRAINING_DS;
+    TABLE MARITAL_STATUS;
+RUN;
+
+TITLE "Univariate Analysis - Bar Chart of Marital Status";
+ODS GRAPHICS / RESET WIDTH=3.0in HEIGHT=4.0in IMAGEMAP;
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    VBAR MARITAL_STATUS;
+RUN;
+
+/* Qualification: Frequency distribution and bar chart */
+TITLE "Univariate Analysis - Frequency of Qualification";
+PROC FREQ DATA = ASGMTLIB.TRAINING_DS;
+    TABLE QUALIFICATION;
+RUN;
+
+TITLE "Univariate Analysis - Bar Chart of Qualification";
+ODS GRAPHICS / RESET WIDTH=3.0in HEIGHT=4.0in IMAGEMAP;
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    VBAR QUALIFICATION;
+RUN;
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Univariate Analysis - Numerical Variables
+ Dataset - TRAINING_DS
+**************************************************************/
+
+/* Candidate Income: Summary statistics and histogram */
+TITLE "Univariate Analysis - Summary of Candidate Income";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+    VAR CANDIDATE_INCOME;
+RUN;
+
+TITLE "Univariate Analysis - Histogram of Candidate Income";
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    HISTOGRAM CANDIDATE_INCOME;
+RUN;
+
+/* Guarantee Income: Summary statistics and histogram */
+TITLE "Univariate Analysis - Summary of Guarantee Income";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+    VAR GUARANTEE_INCOME;
+RUN;
+
+TITLE "Univariate Analysis - Histogram of Guarantee Income";
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    HISTOGRAM GUARANTEE_INCOME;
+RUN;
+
+/* Loan Duration: Summary statistics and histogram */
+TITLE "Univariate Analysis - Summary of Loan Duration";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+    VAR LOAN_DURATION;
+RUN;
+
+TITLE "Univariate Analysis - Histogram of Loan Duration";
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    HISTOGRAM LOAN_DURATION;
+RUN;
+
+/* Loan Amount: Summary statistics and histogram */
+TITLE "Univariate Analysis - Summary of Loan Amount";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+    VAR LOAN_AMOUNT;
+RUN;
+
+TITLE "Univariate Analysis - Histogram of Loan Amount";
+PROC SGPLOT DATA = ASGMTLIB.TRAINING_DS;
+    HISTOGRAM LOAN_AMOUNT;
+RUN;
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Bivariate Analysis - Categorical vs Categorical
+ Dataset - TRAINING_DS
+**************************************************************/
+/* Relationship between Marital Status and Family Members */
+TITLE1 "Bivariate Analysis of Categorical Variables";
+TITLE2 "Marital Status vs Family Members";
+PROC FREQ DATA = ASGMTLIB.TRAINING_DS;
+    TABLE MARITAL_STATUS * FAMILY_MEMBERS /
+        PLOTS = FREQPLOT(TWOWAY=STACKED SCALE=GROUPPCT);
+RUN;
+
+/* Relationship between Marital Status and Qualification */
+TITLE1 "Bivariate Analysis of Categorical Variables";
+TITLE2 "Marital Status vs Qualification";
+PROC FREQ DATA = ASGMTLIB.TRAINING_DS;
+    TABLE MARITAL_STATUS * QUALIFICATION /
+        PLOTS = FREQPLOT(TWOWAY=STACKED SCALE=GROUPPCT);
+RUN;
+
+/* Relationship between Gender and Employment */
+TITLE1 "Bivariate Analysis of Categorical Variables";
+TITLE2 "Gender vs Employment";
+PROC FREQ DATA = ASGMTLIB.TRAINING_DS;
+    TABLE GENDER * EMPLOYMENT /
+        PLOTS = FREQPLOT(TWOWAY=STACKED SCALE=GROUPPCT);
+RUN;
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Bivariate Analysis - Categorical vs Numerical
+ Dataset - TRAINING_DS
+**************************************************************/
+
+/* Compare Loan Amount across Employment categories */
+TITLE1 "Bivariate Analysis of Variables";
+TITLE2 "Employment vs Loan Amount";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS;
+    CLASS EMPLOYMENT;        /* Grouping by Employment (categorical) */
+    VAR LOAN_AMOUNT;         /* Summarizing Loan Amount (numeric) */
+RUN;
+
+/* Compare Loan Duration across Qualification categories */
+TITLE1 "Bivariate Analysis of Variables";
+TITLE2 "Qualification vs Loan Duration";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS;
+    CLASS QUALIFICATION;     /* Grouping by Qualification (categorical) */
+    VAR LOAN_DURATION;       /* Summarizing Loan Duration (numeric) */
+RUN;
+
+/* Compare Guarantee Income across Gender categories */
+TITLE1 "Bivariate Analysis of Variables";
+TITLE2 "Gender vs Guarantee Income";
+PROC MEANS DATA = ASGMTLIB.TRAINING_DS;
+    CLASS GENDER;            /* Grouping by Gender (categorical) */
+    VAR GUARANTEE_INCOME;    /* Summarizing Guarantee Income (numeric) */
+RUN;
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Univariate Analysis - Categorical Variables (SAS Macro)
+ Dataset - TESTING_DS
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: UVACATE_VAR
+   Purpose : Generate frequency table for a categorical variable
+   Parameters:
+       PTITLE - Title text for output
+       PDS    - Dataset */
+%MACRO UVACATE_VAR(ptitle, pds, pvar);
+    TITLE "&PTITLE";
+    PROC FREQ DATA=&PDS;
+        TABLE &PVAR;
+    RUN;
+%MEND UVACATE_VAR;
+
+/* Macro calls for categorical variables */
+%UVACATE_VAR(UNIVARIATE ANALYSIS OF THE CATEGORICAL VARIABLE: Family_Members, ASGMTLIB.TESTING_DS, FAMILY_MEMBERS);
+%UVACATE_VAR(UNIVARIATE ANALYSIS OF THE CATEGORICAL VARIABLE: Marital_Status, ASGMTLIB.TESTING_DS, MARITAL_STATUS);
+%UVACATE_VAR(UNIVARIATE ANALYSIS OF THE CATEGORICAL VARIABLE: Qualification,  ASGMTLIB.TESTING_DS, QUALIFICATION);
+%UVACATE_VAR(UNIVARIATE ANALYSIS OF THE CATEGORICAL VARIABLE: Gender, ASGMTLIB.TESTING_DS, GENDER);
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Univariate Analysis - Continuous Variables (SAS Macro)
+ Dataset - TESTING_DS
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: UVA_CONTI_VAR
+   Purpose : Generate summary statistics for a continuous variable
+   Parameters:
+       PTITLE - Title text for output
+       PDS    - Dataset 
+       PVAR   - Continuous variable */
+%MACRO UVA_CONTI_VAR(ptitle, pds, pvar);
+    TITLE "&PTITLE";
+    PROC MEANS DATA=&pds N NMISS MIN MAX MEAN MEDIAN STD;
+        VAR &pvar;
+    RUN;
+%MEND UVA_CONTI_VAR;
+
+/* Macro calls for continuous variables */
+%UVA_CONTI_VAR(UNIVARIATE ANALYSIS OF THE CONTINUOUS VARIABLE: Candidate_Income, ASGMTLIB.TESTING_DS, CANDIDATE_INCOME);
+%UVA_CONTI_VAR(UNIVARIATE ANALYSIS OF THE CONTINUOUS VARIABLE: Guarantee_Income, ASGMTLIB.TESTING_DS, GUARANTEE_INCOME);
+%UVA_CONTI_VAR(UNIVARIATE ANALYSIS OF THE CONTINUOUS VARIABLE: Loan_Amount, ASGMTLIB.TESTING_DS, LOAN_AMOUNT);
+%UVA_CONTI_VAR(UNIVARIATE ANALYSIS OF THE CONTINUOUS VARIABLE: Loan_Duration,    ASGMTLIB.TESTING_DS, LOAN_DURATION);
+
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Bivariate Analysis - Categorical vs Categorical (SAS Macro)
+ Dataset - TESTING_DS
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: BVA_CATE_CATE
+   Purpose : Cross-tabulation and stacked frequency plot for two categorical variables
+   Parameters:
+       PTITLE1 - First line of title
+       PTITLE2 - Second line of title (variables being compared)
+       PDS     - Dataset 
+       PVAR1   - First categorical variable
+       PVAR2   - Second categorical variable */
+%MACRO BVA_CATE_CATE(ptitle1, ptitle2, pds, pvar1, pvar2);
+    TITLE1 "&ptitle1";
+    TITLE2 "&ptitle2";
+    PROC FREQ DATA=&pds;
+        TABLE &pvar1 * &pvar2 /
+            PLOTS=FREQPLOT(TWOWAY=STACKED SCALE=GROUPPCT);
+    RUN;
+%MEND BVA_CATE_CATE;
+
+/* Macro calls */
+%BVA_CATE_CATE(BIVARIATE ANALYSIS OF THE VARIABLES:, Categorical Variable - Marital_Status vs Categorical Variable - Family_Members, ASGMTLIB.TESTING_DS, MARITAL_STATUS, FAMILY_MEMBERS);
+%BVA_CATE_CATE(BIVARIATE ANALYSIS OF THE VARIABLES:, Categorical Variable - Marital_Status vs Categorical Variable - Qualification, ASGMTLIB.TESTING_DS, MARITAL_STATUS, QUALIFICATION);
+%BVA_CATE_CATE(BIVARIATE ANALYSIS OF THE VARIABLES:, Categorical Variable - Gender vs Categorical Variable - Employment, ASGMTLIB.TESTING_DS, GENDER, EMPLOYMENT);
+
+/**************************************************************
+ PART 2 : CHAPTER 6 - ANALYSIS OF THE VARIABLES
+ Bivariate Analysis - Categorical vs Continuous (SAS Macro)
+ Dataset - TESTING_DS
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: BVA_CATE_CONTI
+   Purpose : Summary statistics of a continuous variable grouped by a categorical variable
+   Parameters:
+       PTITLE1 - First line of title
+       PTITLE2 - Second line of title (variables being compared)
+       PDS     - Dataset 
+       PCATE   - Categorical variable
+       PCONTI  - Continuous variable */
+%MACRO BVA_CATE_CONTI(ptitle1, ptitle2, pds, pcate, pconti);
+    TITLE1 "&ptitle1";
+    TITLE2 "&ptitle2";
+    PROC MEANS DATA=&pds;
+        CLASS &pcate;
+        VAR &pconti;
+    RUN;
+%MEND BVA_CATE_CONTI;
+
+/* Macro calls */
+%BVA_CATE_CONTI(BIVARIATE ANALYSIS OF THE VARIABLES:, Categorical Variable - Employment vs Continuous Variable - Loan_Amount, ASGMTLIB.TESTING_DS, EMPLOYMENT, LOAN_AMOUNT);
+%BVA_CATE_CONTI(BIVARIATE ANALYSIS OF THE VARIABLES:, Categorical Variable - Qualification vs Continuous Variable - Loan_Duration, ASGMTLIB.TESTING_DS, QUALIFICATION, LOAN_DURATION);
+%BVA_CATE_CONTI(BIVARIATE ANALYSIS OF THE VARIABLES:, Categorical Variable - Gender vs Continuous Variable - Guarantee_Income, ASGMTLIB.TESTING_DS, GENDER, GUARANTEE_INCOME);
+
+/**************************************************************
+ PART 2 : CHAPTER 7 - Cleaning & Imputation
+ Backup & Restore Utilities (Pre-Imputation Safety)
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: BKP_MAKE
+   Purpose : Create a backup copy of a dataset ( _BK)
+   Param   : PDS - Dataset */
+%MACRO BKP_MAKE(PDS);
+PROC SQL;
+  CREATE TABLE &PDS._BK AS
+  SELECT * FROM &PDS;
+QUIT;
+%MEND BKP_MAKE;
+
+/* Macro: BKP_RESTORE
+   Purpose : Restore the dataset from its _BK copy
+   Param   : PDS - Dataset */
+%MACRO BKP_RESTORE(PDS);
+PROC SQL;
+  CREATE TABLE &PDS AS
+  SELECT * FROM &PDS._BK;
+QUIT;
+%MEND BKP_RESTORE;
+
+/* Make backups before any imputation runs --- */
+%BKP_MAKE(ASGMTLIB.TRAINING_DS);
+%BKP_MAKE(ASGMTLIB.TESTING_DS);
+
+%BKP_RESTORE(ASGMTLIB.TRAINING_DS);
+%BKP_RESTORE(ASGMTLIB.TESTING_DS);
+
+/**************************************************************
+ PART 2 : CHAPTER 7 - Cleaning & Imputation
+ Imputing Missing Values (Categorical by Mode) — SAS Macro
+ NOTE: Backup is made before using this macro.
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: IMPUTE_CATE_MODE
+   Purpose : Impute a categorical variable's missing/blank values with its MODE.
+   Params  : PTITLEVAR - Pretty variable name for TITLES
+             PDS       - Dataset
+             PVAR      - Categorical variable name
+             PSTATS    - Output dataset to store counts/mode */
+%MACRO IMPUTE_CATE_MODE(PTITLEVAR, PDS, PVAR, PSTATS);
+
+  /**************************************************************
+   Imputing values - STEP 1
+  **************************************************************/
+  TITLE1 "STEP 1: LIST THE DETAILS OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT *
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = '');
+  QUIT;
+
+  /**************************************************************
+   Imputing values - STEP 2
+  **************************************************************/
+  TITLE1 "STEP 2: COUNT THE TOTAL NUMBER OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT COUNT(*) LABEL = "Total number of loan applicants"
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = '');
+  QUIT;
+
+  /**************************************************************
+   Imputing values - STEP 3
+  **************************************************************/
+  TITLE1 "STEP 3: FIND THE MOD VALUE AND SAVE THE STATISTICS IN A TEMPORARY DATASET";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    CREATE TABLE &PSTATS AS
+    SELECT t.&PVAR AS &PVAR, COUNT(*) AS counts
+    FROM &PDS t
+    WHERE ( (t.&PVAR IS NOT MISSING) OR (t.&PVAR NE '') )
+    GROUP BY t.&PVAR;
+  QUIT;
+
+  /**************************************************************
+   Imputing values - STEP 4: impute the missing values found...
+  **************************************************************/
+  TITLE1 "STEP 4: IMPUTE THE MISSING VALUES FOUND...";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    UPDATE &PDS
+      SET &PVAR = (
+        SELECT to.&PVAR
+        FROM &PSTATS to
+        WHERE to.counts = (SELECT MAX(ti.counts) FROM &PSTATS ti)
+      )
+    WHERE (&PVAR IS MISSING OR &PVAR = '');
+  QUIT;
+  /**************************************************************
+   Imputing values - STEP 5(AI)
+  **************************************************************/
+  TITLE1 "STEP 5(AI): LIST THE DETAILS OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT *
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = '');
+  QUIT;
+/**************************************************************
+   Imputing values - STEP 6(AI)
+  **************************************************************/
+  TITLE1 "STEP 6(AI): COUNT THE TOTAL NUMBER OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT COUNT(*) LABEL = "Total number of loan applicants"
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = '');
+  QUIT;
+
+%MEND IMPUTE_CATE_MODE;
+
+/* TRAINING: MARITAL_STATUS */
+%IMPUTE_CATE_MODE(Marital_Status, ASGMTLIB.TRAINING_DS, MARITAL_STATUS, ASGMTLIB.TRAINING_STATS_DS);
+
+/* TRAINING: FAMILY_MEMBERS */
+%IMPUTE_CATE_MODE(Family_Members,  ASGMTLIB.TRAINING_DS, FAMILY_MEMBERS,  ASGMTLIB.TRAINING_STATS_DS);
+
+/* TESTING: MARITAL_STATUS */
+%IMPUTE_CATE_MODE(Family_Members, ASGMTLIB.TESTING_DS,  FAMILY_MEMBERS, ASGMTLIB.TESTING_STATS_DS);
+
+/**************************************************************
+ PART 2 : CHAPTER 7 - Cleaning & Imputation
+ Imputing Missing Values — Continuous (Mean) [SAS Macro]
+ NOTE: Make a backup once before using this macro if needed.
+**************************************************************/
+
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: IMPUTE_CONT_MEAN
+   Purpose : Impute missing values of a continuous variable using MEAN
+   Params  : PTITLEVAR - Pretty variable name for titles (e.g., Loan_Amount)
+             PDS       - Dataset (libref.member)
+             PVAR      - Continuous variable name
+*/
+%MACRO IMPUTE_CONT_MEAN(PTITLEVAR, PDS, PVAR);
+
+  /**************************************************************
+   STEP 1: List applicants with missing values (continuous)
+  **************************************************************/
+  TITLE1 "STEP 1: LIST THE DETAILS OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT *
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = .);
+  QUIT;
+
+  /**************************************************************
+   STEP 2: Count applicants with missing values (continuous)
+  **************************************************************/
+  TITLE1 "STEP 2: COUNT THE TOTAL NUMBER OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT COUNT(*) LABEL='Number of Loan Applicants'
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = .);
+  QUIT;
+
+  /**************************************************************
+   STEP 3: Impute missing values with MEAN
+  **************************************************************/
+  PROC STDIZE DATA=&PDS REPONLY METHOD=MEAN OUT=&PDS;
+    VAR &PVAR;
+  QUIT;
+
+  /**************************************************************
+   STEP 4(AI): Post-imputation listing (should be empty)
+  **************************************************************/
+  TITLE1 "STEP 4(AI): LIST THE DETAILS OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT *
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = .);
+  QUIT;
+
+  /**************************************************************
+   STEP 5(AI): Post-imputation count (should be zero)
+  **************************************************************/
+  TITLE1 "STEP 5(AI): COUNT THE TOTAL NUMBER OF THE LOAN APPLICANTS";
+  TITLE2 "WHO SUBMITTED THEIR LOAN APPLICATIONS WITHOUT &PTITLEVAR DATA";
+  FOOTNOTE "----End----";
+  PROC SQL;
+    SELECT COUNT(*) LABEL='Number of Loan Applicants'
+    FROM &PDS t
+    WHERE (t.&PVAR IS MISSING OR t.&PVAR = .);
+  QUIT;
+
+%MEND IMPUTE_CONT_MEAN;
+
+
+/* TRAINING: LOAN_AMOUNT */
+%IMPUTE_CONT_MEAN(Loan_Amount, ASGMTLIB.TRAINING_DS, LOAN_AMOUNT);
+
+/* TRAINING: LOAN_DURATION */
+%IMPUTE_CONT_MEAN(Loan_Duration, ASGMTLIB.TRAINING_DS, LOAN_DURATION);
+
+/* TESTING: LOAN_AMOUNT */
+%IMPUTE_CONT_MEAN(Loan_Amount, ASGMTLIB.TESTING_DS, LOAN_AMOUNT);
+
+/**************************************************************
+ PART 2 : CHAPTER 8 - MODEL CREATION
+ Logistic Regression: Train, Save, and Score
+**************************************************************/
+
+/* Train logistic regression model
+   - Categorical predictors defined in CLASS
+   - Continuous predictors in MODEL
+   - Save the model to OUTMODEL
+   - Save predicted probabilities to TRAINING_OUT_DS */
+TITLE "Logistic Regression - Model Creation (Training)";
+PROC LOGISTIC DATA=ASGMTLIB.TRAINING_DS
+              OUTMODEL=ASGMTLIB.TRAINING_DS_LR_MODEL;   /* save model */
+    CLASS
+        GENDER
+        MARITAL_STATUS
+        FAMILY_MEMBERS
+        QUALIFICATION
+        EMPLOYMENT
+        LOAN_HISTORY
+        LOAN_LOCATION
+    ;
+    MODEL LOAN_APPROVAL_STATUS =
+        GENDER
+        MARITAL_STATUS
+        FAMILY_MEMBERS
+        QUALIFICATION
+        EMPLOYMENT
+        LOAN_HISTORY
+        LOAN_LOCATION
+        CANDIDATE_INCOME
+        GUARANTEE_INCOME
+        LOAN_AMOUNT
+        LOAN_DURATION
+    ;
+    /* Save predicted probabilities to an output dataset */
+    OUTPUT OUT=ASGMTLIB.TRAINING_OUT_DS
+           P=PRED_PROB;   /* predicted probability of modeled event */
+
+    /*
+        PRED_PROB → Variable storing the predicted probabilities from the model.
+        OUT → The dataset where model predictions are saved.
+
+        Model Evaluation:
+        - Akaike Information Criterion (AIC) should be less than Schwarz Criterion (SC) 
+          for a better model fit.
+        - Pr > ChiSq (p-value) indicates statistical significance:
+            - If p-value ≤ 0.05 → Variable is statistically significant and contributes 
+              meaningfully to predicting the dependent variable.
+            - If p-value > 0.05 → Variable is not statistically significant in the model.
+    */
+RUN;
+
+/*Predict the Loan Approval Status using the model created*/
+
+TITLE "Logistic Regression - Scoring (Testing)";
+PROC LOGISTIC INMODEL=ASGMTLIB.TRAINING_DS_LR_MODEL;   /* load saved model */
+    SCORE DATA=ASGMTLIB.TESTING_DS
+          OUT=ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+QUIT;
+
+
+TITLE "Report - Loan Approval Status Predicted";
+FOOTNOTE "----End----";
+
+/* Display the details of the loan approval status predicted */
+PROC SQL;
+    SELECT *
+    FROM ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+QUIT;
+
+/* Dataset metadata (useful for appendix) */
+/*Output: 
+/home/u64179868/sasuser.v94/DAP_FT_JUN_2025_ASGMT_TP086704/testing_las_pred_tp086704_ds.sas7bdat */
+
+PROC CONTENTS DATA=ASGMTLIB.TESTING_LAS_PRED_TP086704_DS; 
+RUN;
+
+PROC SQL;
+    DESCRIBE TABLE ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+QUIT;
+
+/**************************************************************
+ PART 3 : CHAPTER 9 - Report Generation
+ PDF Report: Predicted Bank Loan Approval Status
+**************************************************************/
+
+/* Close any open ODS destinations (clean start) */
+ods html close; 
+ods pdf  close;
+ods listing close;
+
+/* PDF output location & basic options */
+ods pdf file="/home/u64179868/sasuser.v94/DAP_FT_JUN_2025_ASGMT_TP086704/LAS_REPORT_TP086704.pdf";
+options nodate;
+
+/* Report titles/footers */
+title1 "Predicted Bank Loan Approval Status Report";
+title2 "APU, TPM";
+footnote "— End of Report —";
+
+
+/* Main report */
+ods proclabel "Loan Approval Predictions";
+proc report data= ASGMTLIB.TESTING_LAS_PRED_TP086704_DS nowindows;
+    by SME_LOAN_ID_NO;
+
+    /* Column definitions (labels chosen for clean PDF headings) */
+    define SME_LOAN_ID_NO   / group  "Loan ID";
+    define GENDER           / group  "Gender";
+    define MARITAL_STATUS   / group  "Marital Status";
+    define FAMILY_MEMBERS   / group  "Family Members";
+    define CANDIDATE_INCOME / group  "Monthly Income";
+    define GUARANTEE_INCOME / group  "Co-Applicant's Income";
+    define LOAN_AMOUNT      / group  "Loan Amount";
+    define LOAN_DURATION    / group  "Loan Duration";
+    define LOAN_HISTORY     / group  "Loan History";
+    define LOAN_LOCATION    / group  "Loan Location";
+
+run;
+
+/**************************************************************
+ PART 3 : CHAPTER 9 - REPORT GENERATION
+ COMPLEX REPORT BY LOAN LOCATION 
+**************************************************************/
+/* Enable compile-time notes for macros */
+OPTIONS MCOMPILENOTE=ALL;
+
+/* Macro: MACRO_RPT_3
+   Purpose : Generate a complex report filtered by loan location (CITY/VILLAGE/TOWN)
+             and create a location-specific output table with derived fields.
+   Params  : PLOAN_LOCATION - Location filter (CITY / VILLAGE / TOWN)
+*/
+%MACRO MACRO_RPT_3(PLOAN_LOCATION);
+
+    /* Map location parameter to dataset suffix  */
+    %LOCAL SFX OUTDS;
+    %IF %UPCASE(&PLOAN_LOCATION) = CITY    %THEN %LET SFX = CTY;
+    %ELSE %IF %UPCASE(&PLOAN_LOCATION) = VILLAGE %THEN %LET SFX = VLG;
+    %ELSE %IF %UPCASE(&PLOAN_LOCATION) = TOWN    %THEN %LET SFX = TWN;
+    %ELSE %DO;
+        %PUT ERROR: (MACRO_RPT_3) INVALID LOAN_LOCATION=&PLOAN_LOCATION. USE CITY, VILLAGE, OR TOWN.;
+        %RETURN;
+    %END;
+
+    %LET OUTDS = ASGMTLIB.TESTING_LAS_PRED_TP086704_&SFX;
+
+    /* Drop output table if it already exists */
+    %IF %SYSFUNC(EXIST(&OUTDS)) %THEN %DO;
+        PROC SQL;
+            DROP TABLE &OUTDS;
+        QUIT;
+    %END;
+
+    /* Create specific location output table */
+    PROC SQL;
+        CREATE TABLE &OUTDS AS
+        SELECT 
+            L.SME_LOAN_ID_NO AS Loan_ID,
+
+            /* Gender short name */
+            CASE 
+                WHEN UPCASE(L.GENDER) = 'MALE'   THEN 'M'
+                WHEN UPCASE(L.GENDER) = 'FEMALE' THEN 'F'
+                ELSE 'N/A'
+            END AS Gender_short_name,
+
+            /* Remarks based on gender + loan history */
+            CASE 
+                WHEN UPCASE(L.GENDER) = 'MALE'   AND L.LOAN_HISTORY = 1 THEN 
+                     'He is a good applicant. For he has settled his past loan(s) on time.'
+                WHEN UPCASE(L.GENDER) = 'MALE'   AND L.LOAN_HISTORY = 0 THEN 
+                     'He is not a good applicant. For he has not settled his past loan(s) on time.'
+                WHEN UPCASE(L.GENDER) = 'FEMALE' AND L.LOAN_HISTORY = 1 THEN 
+                     'She is a good applicant. For she has settled her past loan(s) on time.'
+                WHEN UPCASE(L.GENDER) = 'FEMALE' AND L.LOAN_HISTORY = 0 THEN 
+                     'She is not a good applicant. For she has not settled her past loan(s) on time.'
+                ELSE 'N/A'
+            END AS Remarks
+        FROM ASGMTLIB.TESTING_LAS_PRED_TP086704_DS L
+        WHERE UPCASE(L.LOAN_LOCATION) = "%UPCASE(&PLOAN_LOCATION)";
+    QUIT;
+
+    /* Print Final Report */
+    TITLE1 "COMPLEX REPORT: %SYSFUNC(DATE(),WORDDATE.)";
+    TITLE2 "DETAILS OF THE LOAN APPLICANTS — &PLOAN_LOCATION";
+    PROC PRINT DATA=&OUTDS;
+        VAR Loan_ID Gender_short_name Remarks;
+    RUN;
+
+%MEND MACRO_RPT_3;
+
+/*Location: City*/
+%MACRO_RPT_3(CITY);
+
+/*Location: Village*/
+%MACRO_RPT_3(VILLAGE);
+
+/*Location: Town*/
+%MACRO_RPT_3(TOWN);
+
+/**************************************************************
+ PART 3 : CHAPTER 10 - DATA VISUALISATION
+ Four key visuals for the scored (testing) dataset
+ DS: ASGMTLIB.TESTING_LAS_PRED_TP086704_DS
+**************************************************************/
+
+/***************************************************
+ STACKED BAR CHART
+ - Shows number of FAMILY_MEMBERS by LOAN_LOCATION
+ - Groups are stacked to compare location composition
+***************************************************/
+TITLE "Number of Family Members by Loan Location";
+PROC SGPLOT DATA=ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+    VBAR FAMILY_MEMBERS /
+         GROUP=LOAN_LOCATION
+         GROUPDISPLAY=STACK   /* stack groups above each other */;
+    LABEL FAMILY_MEMBERS = "Number of Family Members"
+          LOAN_LOCATION  = "Loan Location";
+RUN;
+
+/***************************************************
+ PIE CHART
+ - Overall distribution of predicted LOAN APPROVAL STATUS
+ - Quick view of class proportions
+***************************************************/
+TITLE "Loan Approval Status Predicted";
+PROC GCHART DATA=ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+    PIE3D I_LOAN_APPROVAL_STATUS;
+    LABEL I_LOAN_APPROVAL_STATUS = "Loan Approval Status";
+RUN;
+QUIT;
+
+/***************************************************
+ BOX PLOT
+ - Compares LOAN_AMOUNT distributions across
+   LOAN APPROVAL STATUS categories
+ - Highlights median, spread, and outliers
+***************************************************/
+TITLE "Loan Amount by Loan Approval Status";
+PROC SGPLOT DATA=ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+    VBOX LOAN_AMOUNT / CATEGORY=I_LOAN_APPROVAL_STATUS;
+    LABEL LOAN_AMOUNT           = "Loan Amount"
+          I_LOAN_APPROVAL_STATUS = "Loan Approval Status";
+RUN;
+
+/***************************************************
+ CLUSTERED BAR CHART
+ - Shows LOAN APPROVAL STATUS across QUALIFICATION
+ - Side-by-side bars for clean comparison
+***************************************************/
+TITLE "Loan Approval Status by Qualification";
+PROC SGPLOT DATA=ASGMTLIB.TESTING_LAS_PRED_TP086704_DS;
+    VBAR QUALIFICATION /
+         GROUP=I_LOAN_APPROVAL_STATUS
+         GROUPDISPLAY=CLUSTER;   /* side-by-side grouping */
+    LABEL QUALIFICATION          = "Qualification"
+          I_LOAN_APPROVAL_STATUS = "Loan Approval Status";
+RUN;
+
+
+
+
+
+
