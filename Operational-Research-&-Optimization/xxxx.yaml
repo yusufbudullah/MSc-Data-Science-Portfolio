@@ -1,0 +1,170 @@
+name: Restaurant_Dish_Decision
+type: decision
+
+DoSample:
+  type: decision
+
+  Sample:
+    type: chance
+    # The RM45 cost is applied to the payoffs below
+
+    Positive:
+      type: decision
+      p: 0.7
+
+      FoodA:
+        type: chance
+        High:
+          type: terminal
+          p: 0.7
+          payoff: 255   # RM 300 - RM 45 Cost
+        Medium:
+          type: terminal
+          p: 0.2
+          payoff: 135   # RM 180 - RM 45 Cost
+        Low:
+          type: terminal
+          p: 0.1
+          payoff: 55    # RM 100 - RM 45 Cost
+
+      FoodB:
+        type: chance
+
+        WithCompetition:
+          type: chance
+          p: 0.65
+          High:
+            type: terminal
+            p: 0.3
+            payoff: 35    # 80 - 45
+          Medium:
+            type: terminal
+            p: 0.4
+            payoff: 5     # 50 - 45
+          Low:
+            type: terminal
+            p: 0.3
+            payoff: -75   # -30 - 45
+
+        NoCompetition:
+          type: chance
+          p: 0.35
+          High:
+            type: terminal
+            p: 0.6
+            payoff: 305   # 350 - 45
+          Medium:
+            type: terminal
+            p: 0.3
+            payoff: 105   # 150 - 45
+          Low:
+            type: terminal
+            p: 0.1
+            payoff: 40    # 85 - 45
+
+    Negative:
+      type: decision
+      p: 0.3
+
+      FoodA:
+        type: chance
+        High:
+          type: terminal
+          p: 0.3
+          payoff: 255
+        Medium:
+          type: terminal
+          p: 0.3
+          payoff: 135
+        Low:
+          type: terminal
+          p: 0.4
+          payoff: 55
+
+      FoodB:
+        type: chance
+
+        WithCompetition:
+          type: chance
+          p: 0.65
+          High:
+            type: terminal
+            p: 0.3
+            payoff: 35
+          Medium:
+            type: terminal
+            p: 0.4
+            payoff: 5
+          Low:
+            type: terminal
+            p: 0.3
+            payoff: -75
+
+        NoCompetition:
+          type: chance
+          p: 0.35
+          High:
+            type: terminal
+            p: 0.3
+            payoff: 305
+          Medium:
+            type: terminal
+            p: 0.2
+            payoff: 105
+          Low:
+            type: terminal
+            p: 0.5
+            payoff: 40
+
+  NoSample:
+    type: decision
+
+    FoodA:
+      type: chance
+      High:
+        type: terminal
+        p: 0.45
+        payoff: 300
+      Medium:
+        type: terminal
+        p: 0.45
+        payoff: 180
+      Low:
+        type: terminal
+        p: 0.10
+        payoff: 100
+
+    FoodB:
+      type: chance
+
+      WithCompetition:
+        type: chance
+        p: 0.65
+        High:
+          type: terminal
+          p: 0.3
+          payoff: 80
+        Medium:
+          type: terminal
+          p: 0.4
+          payoff: 50
+        Low:
+          type: terminal
+          p: 0.3
+          payoff: -30
+
+      NoCompetition:
+        type: chance
+        p: 0.35
+        High:
+          type: terminal
+          p: 0.4
+          payoff: 350
+        Medium:
+          type: terminal
+          p: 0.4
+          payoff: 150
+        Low:
+          type: terminal
+          p: 0.2
+          payoff: 85
