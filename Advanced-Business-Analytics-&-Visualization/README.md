@@ -12,10 +12,13 @@ This project focuses on the "storytelling" aspect of data science, transforming 
 * **Key Skills & Tools:**
   * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards**
   * **Dashboard Engineering:** Creating interactive, user-driven drill-downs
-  * **Presentation:**  
-  <a href="https://youtu.be/0iM9l_zAdvw">
-    <img src="https://img.youtube.com/vi/0iM9l_zAdvw/maxresdefault.jpg" width="650">
-  </a>
+  * **Presentation:**
+  <p align="center">
+    <a href="https://youtu.be/0iM9l_zAdvw">
+      <img src="https://img.youtube.com/vi/0iM9l_zAdvw/maxresdefault.jpg" width="650">
+    </a>
+  </p>
+  
 
 
 
