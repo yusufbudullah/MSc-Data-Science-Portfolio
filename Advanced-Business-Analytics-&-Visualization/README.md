@@ -10,7 +10,10 @@ This project focuses on the "storytelling" aspect of data science, transforming 
 * **Objective:** To identify operational inefficiencies and revenue risks within the UK National Rail network through interactive exploration.
 * **Dataset:** [Maven Analytics UK Train Rides](https://mavenanalytics.io/data-playground/uk-train-rides).
 * **Key Skills & Tools:**
-    * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards**.
+    * **Visual Storytelling:** Designing cohesive narratives using **Tableau Storyboards** [![View Dashboard](Outputs/Dashboard_Preview.png)](https://public.tableau.com/views/YousoufBudullah_ABAV_UKRail/Story1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+Click the image to open the interactive Tableau dashboard.
+.
     * **Dashboard Engineering:** Creating interactive, user-driven drill-downs.
     * **Communication:** [Recorded video walkthrough](https://youtu.be/0iM9l_zAdvw) and verbal data interpretation.
 * **Core Concepts:**
