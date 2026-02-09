@@ -28,9 +28,9 @@ This project focuses on the "storytelling" aspect of data science, transforming 
   <a href="https://public.tableau.com/views/YousoufBudullah_ABAV_UKRail/Story1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
     <img src="Outputs/Dashboard_Preview.png" width="650">
   </a>
+  <br>
+  <em>Click the image to open the interactive Tableau dashboard.</em>
 </p>
-
-Click the image to open the interactive Tableau dashboard.
 
 * **Core Concepts:**
     * **Graphical Integrity:** Adhering to principles that ensure data is represented accurately without distortion.
