@@ -72,6 +72,13 @@ The model connects daily operations with long-term organisational learning.
 
 ---
 
+## Presentation
+Project walkthrough and explanation:
+
+[![Watch the presentation](https://img.youtube.com/vi/7i9rm6Fsg6k/maxresdefault.jpg)](https://youtu.be/7i9rm6Fsg6k)
+
+---
+
 ## Key Skills & Techniques
 * Qualitative case study research
 * Systematic literature review
